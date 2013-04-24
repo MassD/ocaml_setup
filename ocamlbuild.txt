@@ -1,0 +1,17 @@
+Good user manual:
+
+http://nicolaspouillard.fr/ocamlbuild/ocamlbuild-user-guide.html
+
+===============================================================
+
+How to use ocamlbuild + ocamlfind
+
+Tell ocamlbuild to use batteries through a _tags file: <*>: package(batteries)
+Use open Batteries in your source files to allow referring to BatFoo as just Foo. This also integrates BatList and all other stdlib-extensions into the standard module names.
+Compile with ocamlbuild -use-ocamlfind foo.byte where foo.ml is the name of your main module file. (or foo.native for native compilation)
+
+_tags is a file and you can create it in the same folder of your main.
+inside the _tags, you can write <*>: package(package_name).
+then the command will be **ocamlbuild -use-ocamlfind hello.native**
+
+ps. camomile is the package name of camomile.

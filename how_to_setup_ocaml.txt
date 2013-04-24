@@ -67,3 +67,16 @@
    http://stackoverflow.com/questions/15213437/installed-ocamlfind-findlib-but-never-can-find-any-extra-package-in-mac
 
    eval `opam config env`
+
+7. How to use OCamlbuild + ocamlfind
+
+
+OCaml 3.12 or newer
+
+Ocamlbuild comes with support for findlib since 3.12.0. There may be bugs in its handling of threads in 3.12.0, so we recommend 3.12.1 if you are going to follow these instructions. The 3.10-3.11 instructions will work under 3.12.0 as well.
+
+Tell ocamlbuild to use batteries through a _tags file: <*>: package(batteries)
+
+Use open Batteries in your source files to allow referring to BatFoo as just Foo. This also integrates BatList and all other stdlib-extensions into the standard module names.
+
+Compile with ocamlbuild -use-ocamlfind foo.byte where foo.ml is the name of your main module file. (or foo.native for native compilation)
