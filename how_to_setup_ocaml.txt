@@ -1,0 +1,69 @@
+1. install homebrew
+
+	http://mxcl.github.com/homebrew/
+
+	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
+2. Emacs for Mac OS X
+
+	http://emacsformacosx.com/
+
+3. Install tuareg-mode
+
+	http://forge.ocamlcore.org/forum/forum.php?forum_id=808
+
+	http://marmalade-repo.org/
+	Add to your .emacs: (require 'package) (in home directory)
+
+	(add-to-list 'package-archives 
+		'("marmalade" .
+		  "http://marmalade-repo.org/packages/"))
+	(package-initialize)
+
+	M-x eval-buffer to evaluate it, and then do M-x package-refresh-contents to load in the package listing.\
+
+	** m-x list-packages **
+
+	select tuareg package
+
+	click install
+
+4. Install OCaml, OPam, rlwrap
+
+	make sure XCode command line tool is installed: 
+		http://stackoverflow.com/questions/10921690/on-apple-osx-lion-make-not-in-path
+	
+	brew install ocaml
+
+	brew install opam
+
+	opam init
+
+	brew install rlwrap
+
+5. Install batteries-included (ocamlfind will be installed automatically)
+
+	http://stackoverflow.com/questions/14947667/cant-load-batteries-using-findlib-in-ocaml-toplevel
+
+	opam switch 4.00.1
+	
+	opam install batteries
+
+	http://stackoverflow.com/questions/14751914/opam-package-not-running/14752071#14752071
+
+	http://stackoverflow.com/questions/14840236/ocaml-batteries-installation
+
+	https://github.com/ocaml-batteries-team/batteries-included/blob/master/ocamlinit
+
+	Put the following in ~/.ocamlinit
+	
+	#use "topfind";;
+	Toploop.use_silently
+             Format.err_formatter (Filename.concat (Findlib.package_directory
+             "batteries") "battop.ml");;
+
+6. .bash_profile
+
+   http://stackoverflow.com/questions/15213437/installed-ocamlfind-findlib-but-never-can-find-any-extra-package-in-mac
+
+   eval `opam config env`
